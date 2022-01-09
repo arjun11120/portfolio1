@@ -10,10 +10,12 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -153,36 +155,37 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form id="submit-form"  action="">
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                 <label for="name">Full name</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                 <label for="email">Email address</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="+91 1234567890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
+                                <input class="form-control" name="phone" id="phone" type="tel" placeholder="Enter your phone number..." data-sb-validations="required" />
+                                <label for="phone">phone</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <input class="form-control" name="message" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                 <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Message me...</div>
                             </div>
-                            <div class="d-none" id="submitSuccessMessage">
+                            
+                            <div class="" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                             </div>
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                            <button class="btn btn-primary" id="submitButton" type="submit">Send</button>
                         </form>
                     </div>
                 </div>
@@ -339,7 +342,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/School2.jpg" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">TENTH in MGM NSS HSS Lakkattoor</p>
+                                    <p class="mb-4">TENTH in in MGM NSS HSS Lakkattoor</p>
                                     <button class="btn btn-primary" href="#index.html" data-bs-dismiss="modal">
                                         <i class="fas fa-times fa-fw"></i>
                                         Close Window
@@ -360,6 +363,25 @@
             duration: 1000,
             once: true,
           });
+        </script>
+        <script>
+            $("#submit-form").submit((e)=>{
+                e.preventDefault()
+                $.ajax({
+                    url:"https://script.google.com/macros/s/AKfycbwBN1oRVuNKH3jT49b_L-ctmHslPk3cGQ2iZfi5W4o36ScMMncPi6CMi5RquDfSlhD5YA/exec",
+                    data:$("#submit-form").serialize(),
+                    method:"post",
+                    success:function (response){
+                        alert("Form submitted successfully")
+                        window.location.reload()
+                        //window.location.href="https://google.com"
+                    },
+                    error:function (err){
+                        alert("Something Error")
+        
+                    }
+                })
+            })
         </script>
 
 
